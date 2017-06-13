@@ -1,0 +1,17 @@
+filedir = 'E:\DSD100\Sources\Dev\051 - AM Contra - Heart Peripheral\vocals.wav';
+audio_info = audioinfo(filedir);
+fs=audio_info.SampleRate; %?????????22050
+x1=audioread(filedir,'native'); %??????????????x1
+y1=fft(x1,1024);  %????1024?FFT??
+f=fs*(0:511)/1024;
+figure(1);
+plot(x1) %????????????
+title('Original Audio Signal');xlabel('time n');ylabel('fuzhi n');
+figure(2);freqz(x1) %??????????????
+title('Frequency Response')
+figure(3);subplot(2,1,1);
+plot(abs(y1(1:512))) %????????FFT???
+title('Original Signal FFT Domain');
+subplot(2,1,2);plot(f,abs(y1(1:512)));
+title('Original Signal Frequency Doumain')
+xlabel('Hz');ylabel('fuzhi');
